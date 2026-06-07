@@ -1,3 +1,5 @@
+//componente de botão estilizado para ser usado como link, com aparência de texto clicável
+
 export default function LinkButton({
   children,
   onClick,

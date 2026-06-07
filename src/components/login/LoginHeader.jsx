@@ -1,3 +1,5 @@
+//componente de cabeçalho para a tela de login, contendo o logo e o nome do sistema
+
 export default function LoginHeader() {
   return (
     <div

@@ -1,3 +1,5 @@
+//componente de botão estilizado para ser usado em formulários, com aparência personalizada
+
 export default function Button({
   children,
   type = "button",

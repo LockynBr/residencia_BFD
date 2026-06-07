@@ -1,3 +1,5 @@
+//componente de checkbox estilizado para ser usado em formulários, com aparência personalizada
+
 export default function Checkbox({
   id,
   label,
