@@ -1,5 +1,63 @@
-//componente de cartão de login, contendo o formulário de autenticação e as 
-//opções de lembrar usuário e recuperar senha
+// import Input from "../ui/Input";
+// import Button from "../ui/Button";
+// import { useNavigate } from "react-router-dom";
+
+// export default function LoginCard() {
+
+//   const navigate = useNavigate();
+
+//   const handleLogin = (event) => {
+//     event.preventDefault();
+
+//     navigate("/dashboard");
+//   };
+
+//   return (
+//     <div
+//       className="
+//         w-full
+//         max-w-[400px]
+
+//         rounded-xl
+//         border
+//         border-green-200
+
+//         bg-white/90
+
+//         p-8
+
+//         shadow-xl
+//         backdrop-blur-sm
+//       "
+//     >
+//       <form className="space-y-5 flex flex-col items-center justify-center" onSubmit={handleLogin}>
+//         <Input
+//           label="Usuário / E-mail"
+//           placeholder="email@email.com"
+//         />
+
+//         <Input
+//           label="Senha"
+//           type="password"
+//           placeholder="Sua senha"
+//         />
+
+//         <Button className="w-64 align-center" type="submit">
+//           Entrar
+//         </Button>
+//       </form>
+//     </div>
+//   );
+// }
+
+
+
+// ============================================================================
+// ============================================================================
+// ============================================================================
+
+
+
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -35,22 +93,142 @@ export default function LoginCard() {
     }
   }, []);
 
-  const handleLogin = (event) => {
-    event.preventDefault();
+//>> versão inicial do projeto
+//>> apenas simulava o login e redirecionava para o dashboard
 
-    if (rememberUser) {
-      localStorage.setItem(
-        "rememberedUser",
-        email
+/*
+if (rememberUser) {
+  localStorage.setItem(
+    "rememberedUser",
+    email
+  );
+} else {
+  localStorage.removeItem(
+    "rememberedUser"
+  );
+}
+
+navigate("/dashboard");
+*/
+// =================================================================================
+// =================================================================================
+
+
+//>> versão atual
+//>> integração React >> Django >> SQLite   abaixo vv
+
+
+  const handleLogin = async (event) => {
+  event.preventDefault();
+
+  //>> mantém a funcionalidade de lembrar o usuário
+
+  if (rememberUser) {
+    localStorage.setItem(
+      "rememberedUser",
+      email
+    );
+  } else {
+    localStorage.removeItem(
+      "rememberedUser"
+    );
+  }
+
+  //==================================================
+  //>> VERSÃO INICIAL
+  //>> Na versão inicial, como já mencionado, o login era apenas simulado.
+  //>> Independentemente dos dados digitados,
+  //>> o usuário era enviado para o dashboard.
+ 
+
+  //==================================================
+  //>> VERSÃO ATUAL com integração back-end
+  //>> Fluxo da autenticação:
+  
+  //>> React captura email e senha
+  //>> fetch envia os dados para a API Django
+  //>> Django consulta o SQLite
+  //>> Django devolve um JSON
+  //>> React analisa a resposta
+  //>> Se válido, redireciona para o dashboard
+  //==================================================
+
+  try {
+
+    //>> É neste ponto que o React deixa de trabalhar
+    //>> exclusivamente no Front-end.
+
+    //>> Até aqui tudo acontecia apenas no navegador.
+
+
+    //>> A partir do fetch, o React passa a conversar
+    //>> com a API Django através de uma rota HTTP.
+
+    
+    const resposta = await fetch(
+      "http://127.0.0.1:8000/api/login/",                    //>> O fetch localiza o endereço informado,
+                                                            //>> envia os dados do formulário para essa rota
+                                                            //>> e aguarda uma resposta do servidor.
+      {
+
+        //>> POST indica envio de dados para o servidor
+
+        method: "POST",
+
+        headers: {
+
+          //>> informa ao Django que os dados estão
+          //>> sendo enviados em formato JSON
+
+          "Content-Type": "application/json",
+        },
+
+        //>> transforma os dados do formulário
+        //>> em JSON para envio ao backend
+
+        body: JSON.stringify({
+          email,
+          senha: password,
+        }),
+      }
+    );
+
+    //>> converte o JSON recebido do Django
+    //>> para um objeto JavaScript utilizável no React
+
+    const dados = await resposta.json();
+
+    //>> se o Django validar o usuário
+    //>> permite acesso ao dashboard
+
+    if (dados.sucesso) {
+
+      console.log(
+        "Usuário autenticado:",
+        dados.usuario
       );
-    } else {
-      localStorage.removeItem(
-        "rememberedUser"
-      );
+
+      navigate("/dashboard");
+
+      return;
     }
 
-    navigate("/dashboard");
-  };
+    //>> credenciais inválidas retornadas pelo backend
+
+    alert(dados.mensagem);
+
+  } catch (erro) {
+
+    //>> erro de comunicação entre React e Django
+    //>> servidor desligado ou indisponível
+
+    console.error(erro);
+
+    alert(
+      "Não foi possível conectar ao servidor."
+    );
+  }
+};
 
   return (
     <div
