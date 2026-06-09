@@ -18,13 +18,13 @@ export default function SidebarHeader({ collapsed }) {
           w-12
           h-12
           rounded-xl
-          bg-green-900
+          bg-green-500
 
           flex
           items-center
           justify-center
 
-          text-white
+          text-[var(--color-neutral-100)]
           font-bold
 
           shrink-0
@@ -35,11 +35,11 @@ export default function SidebarHeader({ collapsed }) {
 
       {!collapsed && (
         <div>
-          <h2 className="font-bold text-white">
+          <h2 className="font-bold text-lg text-[var(--color-neutral-100)]">
             NomeSistema
           </h2>
 
-          <p className="text-xs text-gray-200">
+          <p className="text-xs text-[var(--color-neutral-200)]">
             Diagnóstico
           </p>
         </div>

@@ -12,15 +12,15 @@ export default function Button({
         w-64
         rounded-xl
 
-        bg-green-800
-        text-white
+        bg-[var(--color-green-500)]
+        text-[var(--color-neutral-100)]
         text-sm
         font-medium
 
         shadow-md
         transition
 
-        hover:bg-green-900
+        hover:bg-[var(--color-green-700)]
 
         cursor-pointer
       "

@@ -22,8 +22,8 @@ export default function SidebarSubmenu({
           px-4
           py-3
           rounded-2xl
-          text-white
-          hover:bg-white/10
+          text-[var(--color-neutral-100)]
+          hover:bg-[var(--color-green-500)]/10
           transition-all
         "
       >

@@ -25,12 +25,14 @@ export default function Sidebar() {
     >
       <div
   className="
-    rounded-[32px]
+    rounded-3xl
 
     bg-gradient-to-b
-    from-green-400
-    via-green-600
-    to-green-950
+    from-[var(--color-green-700)]
+    via-[var(--color-green-800)]
+    to-[var(--color-green-800)]
+
+    shadow-[7px_1px_109px_12px_var(--color-green-500)]
 
     p-5
 
@@ -44,7 +46,7 @@ export default function Sidebar() {
     onClick={() => setCollapsed(!collapsed)}
     className={`
       mb-6
-      text-white
+      text-[var(--color-neutral-100)]
 
       ${
         collapsed

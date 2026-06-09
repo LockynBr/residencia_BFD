@@ -16,7 +16,7 @@ export default function Input({
         className="
           text-xs
           font-medium
-          text-green-900
+          text-[var(--color-green-700)]
         "
       >
         {label}
@@ -32,7 +32,7 @@ export default function Input({
               top-1/2
               z-10
               -translate-y-1/2
-              text-green-900
+              text-[var(--color-green-500)]
             "
           />
         )}
@@ -47,7 +47,7 @@ export default function Input({
             w-full
             rounded-xl
             border
-            border-green-500
+            border-[var(--color-green-500)]
 
             pl-10
             pr-10
@@ -56,9 +56,9 @@ export default function Input({
             outline-none
             transition
 
-            focus:border-green-700
+            focus:border-[var(--color-green-500)]
             focus:ring-2
-            focus:ring-green-200
+            focus:ring-[var(--color-green-500)]
           "
         />
 
@@ -76,9 +76,9 @@ export default function Input({
 
               cursor-pointer
 
-              text-green-900
+              text-[var(--color-green-500)]
               transition-colors
-              hover:text-green-700
+              hover:text-[var(--color-green-700)]
             "
           >
             <RightIcon size={20} />

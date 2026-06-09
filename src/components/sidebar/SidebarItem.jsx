@@ -27,8 +27,8 @@ export default function SidebarItem({
 
         ${
           isActive
-            ? "bg-white/20 text-white"
-            : "text-white hover:bg-white/10"
+            ? "bg-[var(--color-green-500)]/50 text-[var(--color-neutral-100)]"
+            : "text-[var(--color-neutral-200)] hover:bg-[var(--color-green-500)]/40"
         }
       `}
     >

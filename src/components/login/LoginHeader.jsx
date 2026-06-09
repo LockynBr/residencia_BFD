@@ -18,8 +18,8 @@ export default function LoginHeader() {
         items-center
         justify-center
         rounded-lg
-        bg-green-900
-        text-white
+        bg-[var(--color-green-800)]
+        text-[var(--color-neutral-100)]
         shadow-lg
         
       "
@@ -33,13 +33,13 @@ export default function LoginHeader() {
           heading-font
           text-2xl
           font-medium
-          text-green-900
+          text-[var(--color-green-800)]
         "
         >
           NomeSistema
         </h1>
 
-        <p className="text-green-800">
+        <p className="text-[var(--color-neutral-100)]">
           Diagnóstico
         </p>
       </div>

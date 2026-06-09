@@ -238,13 +238,13 @@ navigate("/dashboard");
 
         rounded-xl
         border
-        border-green-200
+        border-[var(--color-green-800)]
 
-        bg-white/90
+        bg-[var(--color-neutral-100)]/90
 
         p-8
 
-        shadow-xl
+        shadow-[7px_12px_109px_21px_var(--color-green-700)]
         backdrop-blur-sm
       "
     >
@@ -307,7 +307,7 @@ navigate("/dashboard");
               items-center
               gap-2
               text-sm
-              text-[var(--color-green-500)]
+              text-[var(--color-green-800)]
               cursor-pointer
             "
           >
@@ -323,7 +323,7 @@ navigate("/dashboard");
                 h-3
                 w-3
                 cursor-pointer
-                accent-[var(--color-green-900)]
+                accent-[var(--color-green-700)]
               "
             />
 
@@ -336,7 +336,7 @@ navigate("/dashboard");
               text-sm
               font-medium
               cursor-pointer
-              text-[var(--color-green-500)]
+              text-[var(--color-green-700)]
 
               hover:text-[var(--color-green-900)]
             "

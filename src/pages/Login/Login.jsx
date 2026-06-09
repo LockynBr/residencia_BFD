@@ -11,10 +11,10 @@ export default function Login() {
       items-center
       justify-center
 
-      bg-gradient-to-b
-      from-white
-      via-[var(--color-neutral-100)]
-    to-[var(--color-green-500)]
+      bg-gradient-to-tr
+      from-[var(--color-green-700)]
+      via-[var(--color-green-200)]
+    to-[var(--color-neutral-100)]
 
       px-4
     "

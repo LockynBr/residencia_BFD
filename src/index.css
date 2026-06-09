@@ -7,16 +7,21 @@
   --font-heading: "Roboto", sans-serif;
   --font-body: "Open Sans", sans-serif;
 
-  --color-green-900: #1B5E3A;
-  --color-green-800: #2E7D4F;
-  --color-green-700: #43A46B;
-  --color-green-500: #66C48A;
-  --color-green-200: #A8E6C1;
+  --color-green-900: #2A2725;
+  --color-green-800: #3A4A3F;
+  --color-green-700: #466D49;
+  --color-green-500: #598D5D;
+  --color-green-200: #73A677;
 
-  --color-neutral-100: #F2F2F2;
+  --color-neutral-100: #F6F2F1;
+  --color-neutral-200: #DACBB0;
+  --color-neutral-300: #C9B48E;
+  
+  --color-secondary-100: #EAE2D3;
 
   --color-danger: #E74C3C;
-  --color-sand: #D9CAB3;
+  --color-sand: #AE8F60;
+  --color-coffe: #4C3D19;
 
 }
 
