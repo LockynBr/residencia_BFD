@@ -10,6 +10,7 @@ import Usuarios from "../pages/Users/Usuarios";
 import CreateUser from "../pages/Users/CreateUser";
 
 import Pacientes from "../pages/Pacientes/Pacientes";
+import CadastroPaciente from "../pages/Pacientes/CadastroPaciente";
 import Diagnosticos from "../pages/Diagnosticos/Diagnosticos";
 import Relatorios from "../pages/Relatorios/Relatorios";
 import Sistema from "../pages/Sistema/Sistema";
@@ -29,6 +30,8 @@ export default function AppRoutes() {
         <Route path="/usuarios/novo" element={<CreateUser />} />
 
         <Route path="/pacientes" element={<Pacientes />} />
+
+        <Route path="/pacientes/cadastro" element={<CadastroPaciente />} />
 
         <Route path="/diagnosticos" element={<Diagnosticos />} />
 

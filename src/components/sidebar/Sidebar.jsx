@@ -4,8 +4,8 @@ import { Menu, ChevronLeft } from "lucide-react";
 
 import SidebarHeader from "./SidebarHeader";
 import SidebarItem from "./SidebarItem";
-import { sidebarMainData } from "./sidebarMainData";
-import { sidebarFooterData } from "./sidebarFooterData";
+import { sidebarMainData } from "./SidebarMainData";
+import { sidebarFooterData } from "./SidebarFooterData";
 import SidebarMenu from "./SidebarMenu";
 
 export default function Sidebar() {
