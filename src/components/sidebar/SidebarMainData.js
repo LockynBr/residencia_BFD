@@ -1,9 +1,11 @@
 import {
   LayoutDashboard,
   Users,
+  UserPlus,
   Stethoscope,
   FileText,
   Settings,
+  UserRound,
 } from "lucide-react";
 
 export const sidebarMainData = [
@@ -16,19 +18,41 @@ export const sidebarMainData = [
   {
     title: "Usuários",
     icon: Users,
-    path: "/usuarios",
-  },
-
-  {
-    title: "Diagnósticos",
-    icon: Stethoscope,
-    path: "/diagnosticos",
+    children: [
+      {
+        title: "Listagem",
+        icon: Users,
+        path: "/usuarios",
+      },
+      {
+        title: "Novo Usuário",
+        icon: UserPlus,
+        path: "/usuarios/novo",
+      },
+    ],
   },
 
   {
     title: "Pacientes",
-    icon: Users,
-    path: "/pacientes",
+    icon: Stethoscope,
+    children: [
+      {
+        title: "Listagem",
+        icon: Stethoscope,
+        path: "/pacientes",
+      },
+      {
+        title: "Novo Paciente",
+        icon: UserPlus,
+        path: "/pacientes/cadastro",
+      },
+    ],
+  },
+
+  {
+    title: "Diagnósticos",
+    icon: FileText,
+    path: "/diagnosticos",
   },
 
   {

@@ -12,13 +12,7 @@ export default function Pacientes() {
           Pacientes
         </h1>
 
-      <Button
-  variant="primary"
-  onClick={() => navigate("/pacientes/cadastro")}
-  className="w-auto px-6"
->
-  Novo Paciente
-</Button>
+      
       </div>
 
       <div
