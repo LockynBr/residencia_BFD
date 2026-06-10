@@ -12,13 +12,7 @@ export default function Usuarios() {
           Usuários
         </h1>
 
-      <Button
-  variant="primary"
-  onClick={() => navigate("/usuarios/novo")}
-  className="w-auto px-6"
->
-  Novo Usuário
-</Button>
+      
       </div>
 
       <div

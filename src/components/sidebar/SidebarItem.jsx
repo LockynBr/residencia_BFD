@@ -12,18 +12,17 @@ export default function SidebarItem({
       className={({ isActive }) => `
         flex
         items-center
-
-        ${
-          collapsed
-            ? "justify-center"
-            : ""
-        }
-
         gap-3
+
         px-4
         py-3
+
         rounded-2xl
+
+        overflow-hidden
+
         transition-all
+        duration-300
 
         ${
           isActive
@@ -32,16 +31,34 @@ export default function SidebarItem({
         }
       `}
     >
-      <Icon
-        size={22}
-        className="shrink-0"
-      />
+      <div
+        className="
+          w-6
+          flex
+          justify-center
+          shrink-0
+        "
+      >
+        <Icon size={22} />
+      </div>
 
-      {!collapsed && (
-        <span className="whitespace-nowrap">
-          {item.title}
-        </span>
-      )}
+      <span
+        className={`
+          whitespace-nowrap
+          overflow-hidden
+
+          transition-all
+          duration-300
+
+          ${
+            collapsed
+              ? "w-0 opacity-0"
+              : "w-auto opacity-100"
+          }
+        `}
+      >
+        {item.title}
+      </span>
     </NavLink>
   );
 }

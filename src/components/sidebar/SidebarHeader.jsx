@@ -1,30 +1,28 @@
-export default function SidebarHeader({ collapsed }) {
+export default function SidebarHeader({
+  collapsed,
+}) {
   return (
     <div
-      className={`
+      className="
         flex
         items-center
+        gap-3
         mb-10
-
-        ${
-          collapsed
-            ? "justify-center"
-            : "gap-3"
-        }
-      `}
+        overflow-hidden
+      "
     >
       <div
         className="
-          w-12
-          h-12
+          w-14
+          h-14
           rounded-xl
-          bg-green-500
+          bg-[var(--color-secondary-100)]
 
           flex
           items-center
           justify-center
 
-          text-[var(--color-neutral-100)]
+          text-[var(--color-green-700)]
           font-bold
 
           shrink-0
@@ -33,17 +31,40 @@ export default function SidebarHeader({ collapsed }) {
         L
       </div>
 
-      {!collapsed && (
-        <div>
-          <h2 className="font-bold text-lg text-[var(--color-neutral-100)]">
-            NomeSistema
-          </h2>
+      <div
+        className={`
+          overflow-hidden
+          whitespace-nowrap
 
-          <p className="text-xs text-[var(--color-neutral-200)]">
-            Diagnóstico
-          </p>
-        </div>
-      )}
+          transition-all
+          duration-300
+
+          ${
+            collapsed
+              ? "w-0 opacity-0"
+              : "w-full opacity-100"
+          }
+        `}
+      >
+        <h2
+          className="
+            font-bold
+            text-lg
+            text-[var(--color-neutral-100)]
+          "
+        >
+          NomeSistema
+        </h2>
+
+        <p
+          className="
+            text-xs
+            text-[var(--color-neutral-200)]
+          "
+        >
+          Diagnóstico
+        </p>
+      </div>
     </div>
   );
 }
