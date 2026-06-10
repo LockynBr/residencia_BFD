@@ -8,7 +8,7 @@ export default function Usuarios() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-[var(--color-green-800)]">
+        <h1 className="text-2xl font-bold text-[var(--color-neutral-100)]">
           Usuários
         </h1>
 
