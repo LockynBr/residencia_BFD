@@ -2,7 +2,7 @@ import { useState } from "react";
 import DadosPessoais from "../../components/forms/pacienteForms/DadosPessoais";
 import Endereco from "../../components/forms/pacienteForms/Endereco";
 import DadosClinicos from "../../components/forms/pacienteForms/DadosClinicos";
-
+import ArquivoExame from "../../components/forms/pacienteForms/ArquivoExame";
 
 export default function CadastroPaciente() {
   const [aba, setAba] = useState(1);
@@ -30,6 +30,8 @@ export default function CadastroPaciente() {
     tipoExame: "",
     observacoes: "",
     alergias: "",
+    // Arquivo do Exame
+    arquivoExame: "",
   });
 
   const handleChange = (e) => {
@@ -38,7 +40,7 @@ export default function CadastroPaciente() {
   };
 
   const avancar = () => {
-    if (aba < 3) {
+    if (aba < 4) {
       setAba(aba + 1);
     }
   };
@@ -49,8 +51,7 @@ export default function CadastroPaciente() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     console.log("Dados completos:", formData);
     alert("Paciente cadastrado com sucesso!");
     // Aqui você envia para o backend
@@ -72,7 +73,7 @@ export default function CadastroPaciente() {
         </p>
       </div>
 
-      {/* Indicador de abas */}
+      {/* Indicador de abas - AGORA COM 4 */}
       <div className="flex border-b border-gray-200 bg-gray-50">
         <div
           className={`flex-1 text-center py-3 font-medium ${
@@ -101,9 +102,18 @@ export default function CadastroPaciente() {
         >
           Dados Clínicos
         </div>
+        <div
+          className={`flex-1 text-center py-3 font-medium ${
+            aba === 4
+              ? "text-green-600 border-b-2 border-green-600"
+              : "text-gray-500"
+          }`}
+        >
+          Arquivo do Exame
+        </div>
       </div>
 
-      {/* Conteúdo das abas - SEM FORM AQUI */}
+      {/* Conteúdo das abas */}
       {aba === 1 && (
         <DadosPessoais formData={formData} handleChange={handleChange} />
       )}
@@ -113,8 +123,15 @@ export default function CadastroPaciente() {
       {aba === 3 && (
         <DadosClinicos formData={formData} handleChange={handleChange} />
       )}
+      {aba === 4 && (
+        <ArquivoExame 
+          formData={formData} 
+          handleChange={handleChange}
+          setFormData={setFormData}
+        />
+      )}
 
-      {/* Botões - SEM FORM TAMBÉM */}
+      {/* Botões */}
       <div className="flex justify-end gap-3 p-6 border-t border-gray-200 bg-gray-50">
         <button
           type="button"
@@ -134,7 +151,7 @@ export default function CadastroPaciente() {
           </button>
         )}
 
-        {aba < 3 ? (
+        {aba < 4 ? (
           <button
             type="button"
             onClick={avancar}
