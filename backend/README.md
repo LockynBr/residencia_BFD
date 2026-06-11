@@ -64,6 +64,39 @@ http://127.0.0.1:8000
 
 ---
 
+## Organização do Back-end
+
+Atualmente o projeto possui os seguintes apps:
+
+```txt
+backend/
+├── autenticacao/
+├── usuarios/
+└── config/
+```
+
+### autenticação
+
+Responsável pelas funcionalidades relacionadas ao processo de login do sistema.
+
+Atualmente disponibiliza o endpoint:
+
+```txt
+/api/login/
+```
+
+### usuários
+
+Responsável pelas funcionalidades relacionadas ao gerenciamento de usuários do sistema.
+
+As funcionalidades de cadastro, listagem e demais operações de usuários serão implementadas neste módulo.
+
+### config
+
+Responsável pelas configurações gerais do projeto Django, registro de aplicativos instalados e roteamento principal da API.
+
+---
+
 ## Usuário de teste
 
 ```txt
@@ -73,8 +106,24 @@ Senha: 123456
 
 ---
 
+## Objetivo atual
+
+Validar a integração entre Front-end (React), Back-end (Django) e banco de dados SQLite através de uma arquitetura modular, permitindo a evolução independente dos módulos de autenticação e gerenciamento de usuários.
+
+---
+
 ## Observações
 
-A autenticação atual foi implementada para validação da integração entre React, Django e SQLite.
+A implementação atual possui caráter acadêmico e de prova de conceito.
 
-Ainda não possui hash de senha, JWT ou mecanismos de segurança para produção.
+Neste momento ainda não estão implementados:
+
+* Hash de senha;
+* JWT;
+* Refresh Token;
+* Recuperação de senha;
+* Controle avançado de permissões;
+* Perfis de acesso;
+* Auditoria de usuários.
+
+Essas funcionalidades poderão ser adicionadas em etapas futuras conforme a evolução do projeto.
