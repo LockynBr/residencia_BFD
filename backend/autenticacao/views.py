@@ -1,5 +1,23 @@
+
+
+
+#>> Endpoint responsável pela autenticação dos usuários do módulo de usuários.
+
+#>> O login pode ser realizado utilizando e-mail ou nome de usuário
+#>> (username), desde que a senha informada esteja correta.
+#>>
+#>> Esta implementação foi criada para validar a integração entre
+#>> frontend (React) e backend (Django) durante o desenvolvimento
+#>> do sistema.
+
+#>> Em ambiente de produção, o ideal é utilizar autenticação segura
+#>> com hash de senhas, tokens e controle adequado de sessões.
+
+
+
 import json
 
+from django.db.models import Q
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
@@ -19,11 +37,11 @@ def login_usuario(request):
 
     dados = json.loads(request.body)
 
-    email = dados.get("email")
+    login = dados.get("email")
     senha = dados.get("senha")
 
     usuario = Usuario.objects.filter(
-        email=email,
+        Q(email=login) | Q(username=login),
         senha=senha
     ).first()
 
@@ -40,13 +58,10 @@ def login_usuario(request):
         "usuario": {
             "nome": usuario.nome,
             "email": usuario.email,
+            "username": usuario.username,
             "tipo_usuario": usuario.tipo_usuario,
             "crm": usuario.crm
         }
     })
 
 
-#>>
-#>> Este endpoint ainda é uma versão simples para estudo.
-#>> A senha está sendo comparada diretamente apenas para validar o fluxo inicial.
-#>> Em uma versão real, o correto seria usar hash de senha e autenticação segura.
