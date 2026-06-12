@@ -24,6 +24,21 @@ Dashboard/
 └── README.md           # Documentação do módulo
 ```
 
+## Arquitetura Visual
+
+```text
+Dashboard
+│
+├── Cards (Métricas de topo e controles)
+│
+├── AlertsChart (Painel de pendências)
+│
+└── Gráficos de Análise
+    ├── BarChart (Produtividade por categoria)
+    ├── LineChart (Volume temporal)
+    └── StatusChart (Distribuição percentual)
+```
+
 ## Componentes
 
 ### 1. Dashboard.jsx
