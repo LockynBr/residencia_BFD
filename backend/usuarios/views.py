@@ -21,11 +21,13 @@ a organização do projeto e a separação de responsabilidades.
 
 """
 
-
 import json
 
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+
+# Importamos a ferramenta nativa do Django que funciona como um "triturador de senhas"
+from django.contrib.auth.hashers import make_password
 
 from .models import Usuario
 
@@ -56,13 +58,21 @@ def usuarios_view(request):
     if request.method == "POST":
         dados = json.loads(request.body)
 
+        # ==================================================================
+        # BLINDAGEM DE SENHA (FASE 3)
+        # Pegamos a senha "limpa" que veio do frontend e passamos pelo triturador.
+        # Se a senha existir, ela vira um código irreversível.
+        # ==================================================================
+        senha_pura = dados.get("password")
+        senha_criptografada = make_password(senha_pura) if senha_pura else None
+
         usuario = Usuario.objects.create(
             nome=dados.get("fullName"),
             cpf=dados.get("cpf"),
             telefone=dados.get("phone"),
             email=dados.get("email"),
             username=dados.get("username"),
-            senha=dados.get("password"),
+            senha=senha_criptografada,  # <- Aqui salvamos a senha blindada no banco!
             tipo_usuario=dados.get("role"),
             status=dados.get("status"),
             crm=dados.get("crm"),
