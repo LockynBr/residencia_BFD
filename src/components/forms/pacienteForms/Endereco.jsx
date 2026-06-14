@@ -32,12 +32,33 @@ const estadosBrasileiros = [
 ];
 
 const cidadesPorEstado = {
-  SP: ["São Paulo", "Campinas", "Santos", "Ribeirão Preto", "Sorocaba"],
-  RJ: ["Rio de Janeiro", "Niterói", "Duque de Caxias", "Nova Iguaçu"],
-  MG: ["Belo Horizonte", "Uberlândia", "Contagem", "Juiz de Fora"],
-  BA: ["Salvador", "Feira de Santana", "Vitória da Conquista"],
-  PR: ["Curitiba", "Londrina", "Maringá", "Ponta Grossa"],
-  RS: ["Porto Alegre", "Caxias do Sul", "Pelotas", "Canoas"],
+  AC: ["Rio Branco", "Cruzeiro do Sul", "Sena Madureira", "Tarauacá", "Feijó"],
+  AL: ["Maceió", "Arapiraca", "Rio Largo", "Palmeira dos Índios", "União dos Palmares"],
+  AP: ["Macapá", "Santana", "Laranjal do Jari", "Oiapoque", "Mazagão"],
+  AM: ["Manaus", "Parintins", "Itacoatiara", "Manacapuru", "Coari"],
+  BA: ["Salvador", "Feira de Santana", "Vitória da Conquista", "Camaçari", "Juazeiro"],
+  CE: ["Fortaleza", "Caucaia", "Juazeiro do Norte", "Maracanaú", "Sobral"],
+  DF: ["Brasília", "Ceilândia", "Taguatinga", "Samambaia", "Planaltina"],
+  ES: ["Vitória", "Vila Velha", "Serra", "Cariacica", "Linhares"],
+  GO: ["Goiânia", "Aparecida de Goiânia", "Anápolis", "Rio Verde", "Luziânia"],
+  MA: ["São Luís", "Imperatriz", "São José de Ribamar", "Timon", "Caxias"],
+  MT: ["Cuiabá", "Várzea Grande", "Rondonópolis", "Sinop", "Tangará da Serra"],
+  MS: ["Campo Grande", "Dourados", "Três Lagoas", "Corumbá", "Ponta Porã"],
+  MG: ["Belo Horizonte", "Uberlândia", "Contagem", "Juiz de Fora", "Betim"],
+  PA: ["Belém", "Ananindeua", "Santarém", "Marabá", "Parauapebas"],
+  PB: ["João Pessoa", "Campina Grande", "Santa Rita", "Patos", "Bayeux"],
+  PR: ["Curitiba", "Londrina", "Maringá", "Ponta Grossa", "Cascavel"],
+  PE: ["Recife", "Jaboatão dos Guararapes", "Olinda", "Caruaru", "Petrolina"],
+  PI: ["Teresina", "Parnaíba", "Picos", "Piripiri", "Floriano"],
+  RJ: ["Rio de Janeiro", "São Gonçalo", "Duque de Caxias", "Nova Iguaçu", "Niterói"],
+  RN: ["Natal", "Mossoró", "Parnamirim", "São Gonçalo do Amarante", "Macaíba"],
+  RO: ["Porto Velho", "Ji-Paraná", "Ariquemes", "Vilhena", "Cacoal"],
+  RR: ["Boa Vista", "Rorainópolis", "Caracaraí", "Alto Alegre", "Mucajaí"],
+  RS: ["Porto Alegre", "Caxias do Sul", "Canoas", "Pelotas", "Santa Maria"],
+  SC: ["Florianópolis", "Joinville", "Blumenau", "São José", "Chapecó"],
+  SP: ["São Paulo", "Guarulhos", "Campinas", "São Bernardo do Campo", "Santo André"],
+  SE: ["Aracaju", "Nossa Senhora do Socorro", "Lagarto", "Itabaiana", "São Cristóvão"],
+  TO: ["Palmas", "Araguaína", "Gurupi", "Porto Nacional", "Paraíso do Tocantins"]
 };
 
 export default function Endereco({ formData, handleChange }) {
@@ -54,7 +75,7 @@ export default function Endereco({ formData, handleChange }) {
   return (
     <div className="p-6 space-y-4">
       <div>
-        <label className="block text-gray-700 font-medium mb-1">
+        <label className="block text-green-900 body-font text-sm font-medium mb-1">
           Logradouro
         </label>
         <input
@@ -62,25 +83,27 @@ export default function Endereco({ formData, handleChange }) {
           name="logradouro"
           value={formData.logradouro}
           onChange={handleChange}
-          placeholder="Nome completo do paciente"
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          placeholder="Nome da rua, avenida, etc."
+          className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base placeholder:text-neutral-400"
         />
       </div>
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-gray-700 font-medium mb-1">Número</label>
+          <label className="block text-green-900 body-font text-sm font-medium mb-1">
+            Número
+          </label>
           <input
             type="text"
             name="numero"
             value={formData.numero}
             onChange={handleChange}
             placeholder="Número"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base placeholder:text-neutral-400"
           />
         </div>
         <div>
-          <label className="block text-gray-700 font-medium mb-1">
+          <label className="block text-green-900 body-font text-sm font-medium mb-1">
             Complemento
           </label>
           <input
@@ -89,44 +112,50 @@ export default function Endereco({ formData, handleChange }) {
             value={formData.complemento}
             onChange={handleChange}
             placeholder="Bloco 2, apartamento 005"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base placeholder:text-neutral-400"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-gray-700 font-medium mb-1">CEP</label>
+          <label className="block text-green-900 body-font text-sm font-medium mb-1">
+            CEP
+          </label>
           <input
             type="text"
             name="cep"
             value={formData.cep}
             onChange={handleChange}
             placeholder="00000-000"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base placeholder:text-neutral-400"
           />
         </div>
         <div>
-          <label className="block text-gray-700 font-medium mb-1">Bairro</label>
+          <label className="block text-green-900 body-font text-sm font-medium mb-1">
+            Bairro
+          </label>
           <input
             type="text"
             name="bairro"
             value={formData.bairro}
             onChange={handleChange}
             placeholder="Bairro"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base placeholder:text-neutral-400"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-gray-700 font-medium mb-1">Estado</label>
+          <label className="block text-green-900 body-font text-sm font-medium mb-1">
+            Estado
+          </label>
           <select
             name="estado"
             value={formData.estado}
             onChange={handleChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base"
           >
             <option value="">Selecione</option>
             {estadosBrasileiros.map((estado) => (
@@ -137,13 +166,15 @@ export default function Endereco({ formData, handleChange }) {
           </select>
         </div>
         <div>
-          <label className="block text-gray-700 font-medium mb-1">Cidade</label>
+          <label className="block text-green-900 body-font text-sm font-medium mb-1">
+            Cidade
+          </label>
           <select
             name="cidade"
             value={formData.cidade}
             onChange={handleChange}
             disabled={!formData.estado}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 disabled:bg-gray-100"
+            className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base disabled:bg-neutral-100 disabled:text-neutral-400 disabled:cursor-not-allowed"
           >
             <option value="">Selecione</option>
             {cidades.map((cidade) => (
