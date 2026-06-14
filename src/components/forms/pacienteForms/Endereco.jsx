@@ -32,12 +32,33 @@ const estadosBrasileiros = [
 ];
 
 const cidadesPorEstado = {
-  SP: ["São Paulo", "Campinas", "Santos", "Ribeirão Preto", "Sorocaba"],
-  RJ: ["Rio de Janeiro", "Niterói", "Duque de Caxias", "Nova Iguaçu"],
-  MG: ["Belo Horizonte", "Uberlândia", "Contagem", "Juiz de Fora"],
-  BA: ["Salvador", "Feira de Santana", "Vitória da Conquista"],
-  PR: ["Curitiba", "Londrina", "Maringá", "Ponta Grossa"],
-  RS: ["Porto Alegre", "Caxias do Sul", "Pelotas", "Canoas"],
+  AC: ["Rio Branco", "Cruzeiro do Sul", "Sena Madureira", "Tarauacá", "Feijó"],
+  AL: ["Maceió", "Arapiraca", "Rio Largo", "Palmeira dos Índios", "União dos Palmares"],
+  AP: ["Macapá", "Santana", "Laranjal do Jari", "Oiapoque", "Mazagão"],
+  AM: ["Manaus", "Parintins", "Itacoatiara", "Manacapuru", "Coari"],
+  BA: ["Salvador", "Feira de Santana", "Vitória da Conquista", "Camaçari", "Juazeiro"],
+  CE: ["Fortaleza", "Caucaia", "Juazeiro do Norte", "Maracanaú", "Sobral"],
+  DF: ["Brasília", "Ceilândia", "Taguatinga", "Samambaia", "Planaltina"],
+  ES: ["Vitória", "Vila Velha", "Serra", "Cariacica", "Linhares"],
+  GO: ["Goiânia", "Aparecida de Goiânia", "Anápolis", "Rio Verde", "Luziânia"],
+  MA: ["São Luís", "Imperatriz", "São José de Ribamar", "Timon", "Caxias"],
+  MT: ["Cuiabá", "Várzea Grande", "Rondonópolis", "Sinop", "Tangará da Serra"],
+  MS: ["Campo Grande", "Dourados", "Três Lagoas", "Corumbá", "Ponta Porã"],
+  MG: ["Belo Horizonte", "Uberlândia", "Contagem", "Juiz de Fora", "Betim"],
+  PA: ["Belém", "Ananindeua", "Santarém", "Marabá", "Parauapebas"],
+  PB: ["João Pessoa", "Campina Grande", "Santa Rita", "Patos", "Bayeux"],
+  PR: ["Curitiba", "Londrina", "Maringá", "Ponta Grossa", "Cascavel"],
+  PE: ["Recife", "Jaboatão dos Guararapes", "Olinda", "Caruaru", "Petrolina"],
+  PI: ["Teresina", "Parnaíba", "Picos", "Piripiri", "Floriano"],
+  RJ: ["Rio de Janeiro", "São Gonçalo", "Duque de Caxias", "Nova Iguaçu", "Niterói"],
+  RN: ["Natal", "Mossoró", "Parnamirim", "São Gonçalo do Amarante", "Macaíba"],
+  RO: ["Porto Velho", "Ji-Paraná", "Ariquemes", "Vilhena", "Cacoal"],
+  RR: ["Boa Vista", "Rorainópolis", "Caracaraí", "Alto Alegre", "Mucajaí"],
+  RS: ["Porto Alegre", "Caxias do Sul", "Canoas", "Pelotas", "Santa Maria"],
+  SC: ["Florianópolis", "Joinville", "Blumenau", "São José", "Chapecó"],
+  SP: ["São Paulo", "Guarulhos", "Campinas", "São Bernardo do Campo", "Santo André"],
+  SE: ["Aracaju", "Nossa Senhora do Socorro", "Lagarto", "Itabaiana", "São Cristóvão"],
+  TO: ["Palmas", "Araguaína", "Gurupi", "Porto Nacional", "Paraíso do Tocantins"]
 };
 
 export default function Endereco({ formData, handleChange }) {
