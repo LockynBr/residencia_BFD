@@ -65,78 +65,86 @@ export default function CadastroPaciente() {
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
-      {/* Header com gradiente */}
-      <div className="bg-gradient-to-r from-green-700 to-green-600 p-6">
-        <h1 className="text-2xl font-bold text-white">Cadastro de paciente</h1>
-        <p className="text-green-100 mt-1">
+      {/* Header com gradiente usando cores do tema */}
+      <div className="bg-gradient-to-r from-green-800 to-green-500 p-6">
+        <h1 className="text-2xl font-bold text-white heading-font">
+          Cadastro de paciente
+        </h1>
+        <p className="text-neutral-100 body-font mt-1">
           Preencha os dados abaixo para registrar um novo paciente.
         </p>
       </div>
 
-      {/* Indicador de abas - AGORA COM 4 */}
-      <div className="flex border-b border-gray-200 bg-gray-50">
-        <div
-          className={`flex-1 text-center py-3 font-medium ${
+      {/* Indicador de abas */}
+      <div className="flex border-b border-neutral-200 bg-neutral-100">
+        <button
+          onClick={() => setAba(1)}
+          className={`flex-1 text-center py-3 font-medium transition-all duration-200 body-font ${
             aba === 1
-              ? "text-green-600 border-b-2 border-green-600"
-              : "text-gray-500"
+              ? "text-green-700 border-b-2 border-green-700 bg-white"
+              : "text-green-900 hover:text-green-600 hover:bg-neutral-50"
           }`}
         >
           Dados Pessoais
-        </div>
-        <div
-          className={`flex-1 text-center py-3 font-medium ${
+        </button>
+        <button
+          onClick={() => setAba(2)}
+          className={`flex-1 text-center py-3 font-medium transition-all duration-200 body-font ${
             aba === 2
-              ? "text-green-600 border-b-2 border-green-600"
-              : "text-gray-500"
+              ? "text-green-700 border-b-2 border-green-700 bg-white"
+              : "text-green-900 hover:text-green-600 hover:bg-neutral-50"
           }`}
         >
           Endereço
-        </div>
-        <div
-          className={`flex-1 text-center py-3 font-medium ${
+        </button>
+        <button
+          onClick={() => setAba(3)}
+          className={`flex-1 text-center py-3 font-medium transition-all duration-200 body-font ${
             aba === 3
-              ? "text-green-600 border-b-2 border-green-600"
-              : "text-gray-500"
+              ? "text-green-700 border-b-2 border-green-700 bg-white"
+              : "text-green-900 hover:text-green-600 hover:bg-neutral-50"
           }`}
         >
           Dados Clínicos
-        </div>
-        <div
-          className={`flex-1 text-center py-3 font-medium ${
+        </button>
+        <button
+          onClick={() => setAba(4)}
+          className={`flex-1 text-center py-3 font-medium transition-all duration-200 body-font ${
             aba === 4
-              ? "text-green-600 border-b-2 border-green-600"
-              : "text-gray-500"
+              ? "text-green-700 border-b-2 border-green-700 bg-white"
+              : "text-green-900 hover:text-green-600 hover:bg-neutral-50"
           }`}
         >
           Arquivo do Exame
-        </div>
+        </button>
       </div>
 
       {/* Conteúdo das abas */}
-      {aba === 1 && (
-        <DadosPessoais formData={formData} handleChange={handleChange} />
-      )}
-      {aba === 2 && (
-        <Endereco formData={formData} handleChange={handleChange} />
-      )}
-      {aba === 3 && (
-        <DadosClinicos formData={formData} handleChange={handleChange} />
-      )}
-      {aba === 4 && (
-        <ArquivoExame 
-          formData={formData} 
-          handleChange={handleChange}
-          setFormData={setFormData}
-        />
-      )}
+      <div className="bg-white">
+        {aba === 1 && (
+          <DadosPessoais formData={formData} handleChange={handleChange} />
+        )}
+        {aba === 2 && (
+          <Endereco formData={formData} handleChange={handleChange} />
+        )}
+        {aba === 3 && (
+          <DadosClinicos formData={formData} handleChange={handleChange} />
+        )}
+        {aba === 4 && (
+          <ArquivoExame 
+            formData={formData} 
+            handleChange={handleChange}
+            setFormData={setFormData}
+          />
+        )}
+      </div>
 
       {/* Botões */}
-      <div className="flex justify-end gap-3 p-6 border-t border-gray-200 bg-gray-50">
+      <div className="flex justify-end gap-3 p-6 border-t border-neutral-200 bg-neutral-100">
         <button
           type="button"
           onClick={cancelar}
-          className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
+          className="px-4 py-2 border border-neutral-200 rounded-md text-green-900 bg-white hover:bg-neutral-100 transition-colors cursor-pointer body-font"
         >
           Cancelar
         </button>
@@ -145,7 +153,7 @@ export default function CadastroPaciente() {
           <button
             type="button"
             onClick={voltar}
-            className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
+            className="px-4 py-2 border border-neutral-200 rounded-md text-green-900 bg-white hover:bg-neutral-100 transition-colors cursor-pointer body-font"
           >
             Voltar
           </button>
@@ -155,7 +163,7 @@ export default function CadastroPaciente() {
           <button
             type="button"
             onClick={avancar}
-            className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+            className="px-4 py-2 bg-green-700 text-white rounded-md hover:bg-green-800 transition-colors cursor-pointer font-medium body-font"
           >
             Avançar
           </button>
@@ -163,7 +171,7 @@ export default function CadastroPaciente() {
           <button
             type="button"
             onClick={handleSubmit}
-            className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors"
+            className="px-4 py-2 bg-green-700 text-white rounded-md hover:bg-green-800 transition-colors cursor-pointer font-medium body-font"
           >
             Confirmar
           </button>
