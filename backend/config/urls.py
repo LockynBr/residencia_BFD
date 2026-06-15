@@ -1,8 +1,15 @@
 from django.contrib import admin
 from django.urls import path, include
 
+from .views import home
+
 
 urlpatterns = [
+
+    path(
+        '',
+        home
+    ),
 
     path(
         'admin/',
@@ -18,5 +25,10 @@ urlpatterns = [
         'api/usuarios/',
         include('usuarios.urls')
     ),
+
+    path(
+        'api/pacientes/',
+        include('pacientes.urls')
+    )
 
 ]
