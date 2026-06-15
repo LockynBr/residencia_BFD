@@ -32,3 +32,5 @@ backend/usuarios/__pycache__/
 backend/usuarios/migrations/__pycache__/
 
 *.pyc
+.env
+db.sqlite3
