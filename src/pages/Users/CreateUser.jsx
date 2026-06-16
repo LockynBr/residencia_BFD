@@ -1,7 +1,12 @@
-import UserForm from "../../components/users/UserForm";
+import { useState } from "react";
 
+import UserForm from "../../components/users/UserForm";
+import SuccessModal from "../../components/ui/SuccessModal";
 
 export default function CreateUser() {
+  const [showSuccessModal, setShowSuccessModal] =
+    useState(false);
+
   const handleCreateUser = async (userData) => {
     try {
       const response = await fetch(
@@ -17,34 +22,37 @@ export default function CreateUser() {
 
       const data = await response.json();
 
-      console.log(data);
-
-      alert(data.mensagem);
+      if (data.sucesso) {
+        setShowSuccessModal(true);
+      }
     } catch (error) {
       console.error(error);
-      alert("Erro ao cadastrar usuário.");
     }
   };
 
   return (
-    <div className="mx-auto max-w-4xl">
-      <div className="rounded-2xl bg-white p-8 shadow-lg">
-        <h1 className="mb-8 text-3xl font-bold text-[var(--color-green-800)]">
-          Cadastro de Usuário
-        </h1>
+    <>
+      <div className="mx-auto max-w-4xl">
+        <div className="rounded-2xl bg-white p-8 shadow-lg">
+          <h1 className="mb-8 text-3xl font-bold text-[var(--color-green-800)]">
+            Cadastro de Usuário
+          </h1>
 
-        <UserForm onSubmit={handleCreateUser} />
+          <UserForm
+            mode="create"
+            onSubmit={handleCreateUser}
+          />
+        </div>
       </div>
-    </div>
+
+      <SuccessModal
+        isOpen={showSuccessModal}
+        title="Cadastro realizado"
+        message="Usuário cadastrado com sucesso."
+        onClose={() =>
+          setShowSuccessModal(false)
+        }
+      />
+    </>
   );
 }
-
-// Nesta etapa foi criada a estrutura inicial do endpoint de usuários, permitindo a comunicação entre o front-end (React)
-//  e o back-end (Django).
-// As decisões de modelagem foram baseadas nos campos presentes nas telas disponibilizadas pelo front-end,
-//  buscando manter consistência entre a interface e a estrutura de dados.
-// Atualmente o endpoint já está preparado para receber requisições de cadastro e persistir os dados no banco SQLite. 
-// Algumas regras de negócio mais específicas (como validações avançadas, permissões por perfil e autenticação completa) 
-// serão implementadas nas próximas etapas conforme o refinamento dos requisitos.
-// A estratégia adotada foi priorizar uma estrutura flexível e de fácil evolução, permitindo 
-// ajustes futuros sem impacto significativo na integração já realizada.

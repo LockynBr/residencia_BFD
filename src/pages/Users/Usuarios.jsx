@@ -1,28 +1,18 @@
-/*
-|--------------------------------------------------------------------------
-| Listagem de Usuários
-|--------------------------------------------------------------------------
-|
-| Esta página consulta a API de usuários do backend e exibe os registros
-| cadastrados no sistema.
-|
-| Sempre que a tela é carregada, é feita uma requisição para obter a lista
-| atualizada de usuários, permitindo visualizar os dados salvos no banco.
-|
-*/
-
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+import UserGrid from "../../components/users/UserGrid";
+import ConfirmModal from "../../components/ui/ConfirmModal";
 
 export default function Usuarios() {
   const [usuarios, setUsuarios] = useState([]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     async function carregarUsuarios() {
       try {
-        const response = await fetch(
-          "http://127.0.0.1:8000/api/usuarios/"
-        );
+        const response = await fetch("http://127.0.0.1:8000/api/usuarios/");
 
         const data = await response.json();
 
@@ -66,64 +56,65 @@ export default function Usuarios() {
     }
   };
 
+  const handleEdit = (usuario) => {
+    navigate(`/usuarios/editar/${usuario.id}`);
+  };
+
+  const handleDelete = (usuario) => {
+    setSelectedUser(usuario);
+    setShowDeleteModal(true);
+  };
+
+  const confirmDelete = async () => {
+    try {
+      /*
+    Endpoint futuro
+
+    await fetch(
+      `http://127.0.0.1:8000/api/usuarios/${selectedUser.id}/`,
+      {
+        method: "DELETE",
+      }
+    );
+    */
+
+      setUsuarios((prev) => prev.filter((item) => item.id !== selectedUser.id));
+
+      setShowDeleteModal(false);
+      setSelectedUser(null);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+
+  const [selectedUser, setSelectedUser] = useState(null);
+
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-white">
-        Usuários
-      </h1>
+      <h1 className="text-2xl font-bold text-[var(--color-neutral-100)]">Usuários</h1>
 
-      <div className="rounded-xl border border-[var(--color-neutral-200)] bg-white p-6">
+      <div className="rounded-xl p-6">
         {usuarios.length === 0 ? (
-          <p className="text-gray-500">
-            Nenhum usuário cadastrado.
-          </p>
+          <p className="text-[var(--color-neutral-100)]">Nenhum usuário cadastrado.</p>
         ) : (
-          <div className="space-y-4">
-            {usuarios.map((usuario) => (
-              <div
-                key={usuario.id}
-                className="rounded-lg border border-gray-200 p-4"
-              >
-                <p className="font-bold">
-                  {usuario.nome}
-                </p>
-
-                <p className="text-sm text-gray-600">
-                  E-mail: {usuario.email}
-                </p>
-
-                <p className="text-sm text-gray-600">
-                  Perfil: {traduzirPerfil(usuario.tipo_usuario)}
-                </p>
-
-                <p className="text-sm text-gray-600">
-                  Status: {traduzirStatus(usuario.status)}
-                </p>
-
-                <p className="text-sm text-gray-600">
-                  CPF: {usuario.cpf || "Não informado"}
-                </p>
-
-                <p className="text-sm text-gray-600">
-                  Telefone: {usuario.telefone || "Não informado"}
-                </p>
-
-                {usuario.tipo_usuario === "doctor" && (
-                  <>
-                    <p className="text-sm text-gray-600">
-                      CRM: {usuario.crm || "Não informado"}
-                    </p>
-
-                    <p className="text-sm text-gray-600">
-                      CRM/UF: {usuario.crm_uf || "Não informado"}
-                    </p>
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
+          <UserGrid
+            usuarios={usuarios}
+            traduzirPerfil={traduzirPerfil}
+            traduzirStatus={traduzirStatus}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+          />
         )}
       </div>
+      <ConfirmModal
+        isOpen={showDeleteModal}
+        title="Excluir Usuário"
+        message={`Deseja realmente excluir ${selectedUser?.nome}?`}
+        onConfirm={confirmDelete}
+        onCancel={() => setShowDeleteModal(false)}
+      />
     </div>
   );
 }

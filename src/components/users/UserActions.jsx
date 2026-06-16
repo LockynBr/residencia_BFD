@@ -4,6 +4,7 @@ import Button from "../ui/Button";
 
 export default function UserActions({
   loading,
+  submitLabel = "Salvar Usuário",
 }) {
   const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ export default function UserActions({
         variant="primary"
         disabled={loading}
       >
-        Salvar Usuário
+        {submitLabel}
       </Button>
     </div>
   );
