@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'pacientes',
     'autenticacao',
     'corsheaders',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
