@@ -18,10 +18,15 @@
   --color-neutral-300: #C9B48E;
   
   --color-secondary-100: #EAE2D3;
+  --color-secondary-200: #B2B59C;
 
   --color-danger: #E74C3C;
   --color-sand: #AE8F60;
   --color-coffe: #4C3D19;
+
+--color-text-primary: #D9D0C7;
+  --color-text-secondary: #B8AFA6;
+  --color-text-tertiary: #F6F2F1;
 
 }
 

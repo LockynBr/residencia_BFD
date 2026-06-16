@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import UserPersonalSection from "./UserPersonalSection";
 import UserAccessSection from "./UserAccessSection";
 import UserRoleSection from "./UserRoleSection";
 import UserMedicalSection from "./UserMedicalSection";
 import UserActions from "./UserActions";
-import { isValidEmail } from "../../utils/validators";
 
+import { isValidEmail } from "../../utils/validators";
 
 const initialState = {
   fullName: "",
@@ -29,9 +29,19 @@ const initialState = {
 
 export default function UserForm({
   onSubmit,
+  initialData = null,
+  mode = "create",
 }) {
-  const [formData, setFormData] =
-    useState(initialState);
+  const [formData, setFormData] = useState(initialState);
+
+  useEffect(() => {
+    if (initialData) {
+      setFormData({
+        ...initialState,
+        ...initialData,
+      });
+    }
+  }, [initialData]);
 
   const handleChange = (field, value) => {
     setFormData((prev) => ({
@@ -41,26 +51,24 @@ export default function UserForm({
   };
 
   const handleSubmit = (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (!isValidEmail(formData.email)) {
-    alert("Informe um e-mail válido.");
-    return;
-  }
+    if (!isValidEmail(formData.email)) {
+      alert("Informe um e-mail válido.");
+      return;
+    }
 
-  if (
-    formData.email !==
-    formData.confirmEmail
-  ) {
-    alert(
-      "Os e-mails informados não coincidem."
-    );
-    return;
-  }
+    if (
+      formData.email !== formData.confirmEmail
+    ) {
+      alert(
+        "Os e-mails informados não coincidem."
+      );
+      return;
+    }
 
-  onSubmit(formData);
-};
-  
+    onSubmit(formData);
+  };
 
   return (
     <form
@@ -75,6 +83,7 @@ export default function UserForm({
       <UserAccessSection
         formData={formData}
         handleChange={handleChange}
+        mode={mode}
       />
 
       <UserRoleSection
@@ -87,7 +96,13 @@ export default function UserForm({
         handleChange={handleChange}
       />
 
-      <UserActions />
+      <UserActions
+        submitLabel={
+          mode === "edit"
+            ? "Atualizar Usuário"
+            : "Salvar Usuário"
+        }
+      />
     </form>
   );
 }

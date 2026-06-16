@@ -8,6 +8,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 
 import Usuarios from "../pages/Users/Usuarios";
 import CreateUser from "../pages/Users/CreateUser";
+import EditUser from "../pages/Users/EditUser";
 
 import Pacientes from "../pages/Pacientes/Pacientes";
 import CadastroPaciente from "../pages/Pacientes/CadastroPaciente";
@@ -28,6 +29,8 @@ export default function AppRoutes() {
         <Route path="/usuarios" element={<Usuarios />} />
 
         <Route path="/usuarios/novo" element={<CreateUser />} />
+
+        <Route path="/usuarios/editar/:id" element={<EditUser />} />
 
         <Route path="/pacientes" element={<Pacientes />} />
 
