@@ -10,12 +10,12 @@ export default function UserCard({
 }) {
   return (
     <Card
-      className="h-full min-h-[420px] border border-[var(--color-secondary-200)]
-    bg-gradient-to-tr
-      from-[var(--color-green-700)]
+      className="h-full min-h-[320px] border border-[var(--color-green-700)]
+    bg-linear-to-tr
+      from-[var(--color-green-800)]
       via-[var(--color-green-700)]
-    to-[var(--color-green-800)] 
-    shadow-lg
+    to-[var(--color-green-500)] 
+    shadow-xl
         
     flex flex-col"
     >

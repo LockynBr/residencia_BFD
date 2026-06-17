@@ -20,7 +20,7 @@ export const sidebarMainData = [
     icon: Users,
     children: [
       {
-        title: "Listagem",
+        title: "Lista Usuários",
         icon: Users,
         path: "/usuarios",
       },
@@ -37,7 +37,7 @@ export const sidebarMainData = [
     icon: Stethoscope,
     children: [
       {
-        title: "Listagem",
+        title: "Lista Pacientes",
         icon: Stethoscope,
         path: "/pacientes",
       },
