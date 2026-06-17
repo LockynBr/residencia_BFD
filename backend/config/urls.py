@@ -33,7 +33,7 @@ urlpatterns = [
 
     path(
         'api/dashboard/',
-        include('pacientes.urls')
+        include('dashboard.urls')
     )
 
 ]
