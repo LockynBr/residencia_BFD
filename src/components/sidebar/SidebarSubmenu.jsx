@@ -1,4 +1,5 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+
 import { ChevronDown } from "lucide-react";
 
 export default function SidebarSubmenu({
@@ -9,6 +10,7 @@ export default function SidebarSubmenu({
   toggleMenu,
 }) {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const hasActiveChild = item.children.some(
     (child) => child.path === location.pathname,
@@ -17,6 +19,9 @@ export default function SidebarSubmenu({
   const Icon = item.icon;
 
   const isOpen = openMenu === item.title;
+  const handleLogout = () => {
+    navigate("/");
+  };
 
   return (
     <div>
@@ -115,42 +120,81 @@ export default function SidebarSubmenu({
               gap-1
             "
         >
-          {item.children.map((child) => {
-            const ChildIcon = child.icon;
+         {item.children.map((child) => {
+  const ChildIcon = child.icon;
 
-            return (
-              <NavLink
-                key={child.path}
-                to={child.path}
-                end={child.path === "/usuarios" || child.path === "/pacientes"}
-                className={({ isActive }) => `
-                      flex
-                      items-center
-                      gap-2
+  if (child.action === "logout") {
+    return (
+ <button
+  key={child.title}
+  onClick={handleLogout}
+  className="
+    flex
+    items-center
+    gap-2
 
-                      px-3
-                      py-2
+    px-3
+    py-2
 
-                      rounded-xl
+    rounded-xl
 
-                      text-sm
+    text-sm
 
-                      transition-all
-                      duration-300
+    cursor-pointer
 
-                      ${
-                        isActive
-                          ? "bg-[var(--color-green-500)]/50 text-white"
-                          : "text-[var(--color-neutral-200)] hover:bg-[var(--color-green-500)]/30"
-                      }
-                    `}
-              >
-                <ChildIcon size={16} />
+    text-[var(--color-neutral-200)]
+    hover:bg-red-500/30
+    hover:text-red-300
 
-                <span>{child.title}</span>
-              </NavLink>
-            );
-          })}
+    transition-all
+    duration-300
+  "
+>
+        {ChildIcon && (
+          <ChildIcon size={16} />
+        )}
+
+        <span>{child.title}</span>
+      </button>
+    );
+  }
+
+  return (
+    <NavLink
+      key={child.path}
+      to={child.path}
+      end={
+        child.path === "/usuarios" ||
+        child.path === "/pacientes"
+      }
+      className={({ isActive }) => `
+        flex
+        items-center
+        gap-2
+
+        px-3
+        py-2
+
+        rounded-xl
+
+        text-sm
+
+        transition-all
+        duration-300
+
+        ${
+          isActive
+            ? "bg-[var(--color-green-500)]/50 text-white"
+            : "text-[var(--color-neutral-200)] hover:bg-[var(--color-green-500)]/30"
+        }
+      `}
+    >
+      <ChildIcon size={16} />
+
+      <span>{child.title}</span>
+    </NavLink>
+  );
+})}
         </div>
       )}
     </div>

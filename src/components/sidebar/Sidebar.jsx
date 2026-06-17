@@ -95,7 +95,13 @@ export default function Sidebar() {
               border-white/20
             "
           >
-            <SidebarMenu items={sidebarFooterData} collapsed={collapsed} />
+            <SidebarMenu
+  items={sidebarFooterData}
+  collapsed={collapsed}
+  setCollapsed={setCollapsed}
+  openMenu={openMenu}
+  toggleMenu={toggleMenu}
+/>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import {
   Bot,
-  UserCircle,
+  UserRound,
+  LogOut,
 } from "lucide-react";
 
 export const sidebarFooterData = [
@@ -12,7 +13,13 @@ export const sidebarFooterData = [
 
   {
     title: "Conta",
-    icon: UserCircle,
-    path: "/conta",
+    icon: UserRound,
+    children: [
+      {
+        title: "Logout",
+        icon: LogOut,
+        action: "logout",
+      },
+    ],
   },
 ];
