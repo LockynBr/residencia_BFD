@@ -38,8 +38,26 @@ export default function EditUser() {
         const data =
           await response.json();
 
-        setUsuario(data.usuario);
-        setApiDisponivel(true);
+      setUsuario({
+  fullName: data.usuario.nome || "",
+  cpf: data.usuario.cpf || "",
+  phone: data.usuario.telefone || "",
+
+  email: data.usuario.email || "",
+  confirmEmail: data.usuario.email || "",
+
+  username: data.usuario.username || "",
+  password: "",
+  confirmPassword: "",
+
+  role: data.usuario.tipo_usuario || "",
+  status: data.usuario.status || "active",
+
+  crm: data.usuario.crm || "",
+  crmUf: data.usuario.crm_uf || "",
+});
+
+setApiDisponivel(true);
       } catch (error) {
         console.warn(
           "Endpoint de edição ainda não disponível."

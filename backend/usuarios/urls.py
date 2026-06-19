@@ -1,13 +1,18 @@
 from django.urls import path
 
-from .views import usuarios_view
+from .views import usuarios_view, usuario_detalhe_view
 
 
 urlpatterns = [
     path(
-        '',
+        "",
         usuarios_view,
-        name='usuarios'
+        name="usuarios"
+    ),
+    path(
+        "<uuid:usuario_id>/",
+        usuario_detalhe_view,
+        name="usuario_detalhe"
     ),
 ]
 # ==========================================================

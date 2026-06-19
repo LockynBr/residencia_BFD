@@ -6,13 +6,18 @@ import ConfirmModal from "../../components/ui/ConfirmModal";
 
 export default function Usuarios() {
   const [usuarios, setUsuarios] = useState([]);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     async function carregarUsuarios() {
       try {
-        const response = await fetch("http://127.0.0.1:8000/api/usuarios/");
+        // Integração da listagem de usuários
+        const response = await fetch(
+          "http://127.0.0.1:8000/api/usuarios/"
+        );
 
         const data = await response.json();
 
@@ -66,38 +71,47 @@ export default function Usuarios() {
   };
 
   const confirmDelete = async () => {
+    if (!selectedUser) return;
+
     try {
-      /*
-    Endpoint futuro
+      // Integração da exclusão de usuários
+      const response = await fetch(
+        `http://127.0.0.1:8000/api/usuarios/${selectedUser.id}/`,
+        {
+          method: "DELETE",
+        }
+      );
 
-    await fetch(
-      `http://127.0.0.1:8000/api/usuarios/${selectedUser.id}/`,
-      {
-        method: "DELETE",
+      const data = await response.json();
+
+      if (!response.ok || !data.sucesso) {
+        alert(data.mensagem || "Erro ao excluir usuário.");
+        return;
       }
-    );
-    */
 
-      setUsuarios((prev) => prev.filter((item) => item.id !== selectedUser.id));
+      setUsuarios((prev) =>
+        prev.filter((item) => item.id !== selectedUser.id)
+      );
 
       setShowDeleteModal(false);
       setSelectedUser(null);
     } catch (error) {
       console.error(error);
+      alert("Não foi possível excluir o usuário.");
     }
   };
 
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-
-  const [selectedUser, setSelectedUser] = useState(null);
-
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-[var(--color-neutral-100)]">Usuários</h1>
+      <h1 className="text-2xl font-bold text-[var(--color-neutral-100)]">
+        Usuários
+      </h1>
 
       <div className="rounded-xl p-6">
         {usuarios.length === 0 ? (
-          <p className="text-[var(--color-neutral-100)]">Nenhum usuário cadastrado.</p>
+          <p className="text-[var(--color-neutral-100)]">
+            Nenhum usuário cadastrado.
+          </p>
         ) : (
           <UserGrid
             usuarios={usuarios}
@@ -108,6 +122,7 @@ export default function Usuarios() {
           />
         )}
       </div>
+
       <ConfirmModal
         isOpen={showDeleteModal}
         title="Excluir Usuário"
