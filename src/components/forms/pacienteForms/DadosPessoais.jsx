@@ -23,7 +23,7 @@ export default function DadosPessoais({ formData, handleChange }) {
         <input
           type="text"
           name="cpf"
-          value={formData.cpf}
+          value={formData.cpf} 
           onChange={handleChange}
           placeholder="000.000.000-00"
           className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base placeholder:text-neutral-400"
