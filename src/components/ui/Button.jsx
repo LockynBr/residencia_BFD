@@ -19,6 +19,12 @@ export default function Button({
       hover:opacity-90
     `,
 
+    tertiary: `
+      bg-[var(--color-neutral-200)]
+      text-[var(--color-green-800)]
+      hover:opacity-80
+    `,
+
     danger: `
       bg-[var(--color-danger)]
       text-[var(--color-text-primary)]

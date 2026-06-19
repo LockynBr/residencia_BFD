@@ -8,6 +8,8 @@ export default function PatientFormStepper({
   formData,
   handleChange,
   setFormData,
+  errors,
+  disabledFields,
 }) {
   switch (aba) {
     case 1:
@@ -15,6 +17,7 @@ export default function PatientFormStepper({
         <DadosPessoais
           formData={formData}
           handleChange={handleChange}
+          errors={errors}
         />
       );
 
@@ -23,25 +26,28 @@ export default function PatientFormStepper({
         <Endereco
           formData={formData}
           handleChange={handleChange}
+          errors={errors}
         />
       );
 
-    case 3:
-      return (
-        <DadosClinicos
-          formData={formData}
-          handleChange={handleChange}
-        />
-      );
+    // case 3:
+    //   return (
+    //     <DadosClinicos
+    //       formData={formData}
+    //       handleChange={handleChange}
 
-    case 4:
-      return (
-        <ArquivoExame
-          formData={formData}
-          handleChange={handleChange}
-          setFormData={setFormData}
-        />
-      );
+    //     />
+    //   );
+
+    // case 4:
+    //   return (
+    //     <ArquivoExame
+    //       formData={formData}
+    //       handleChange={handleChange}
+    //       setFormData={setFormData}
+
+    //     />
+    //   );
 
     default:
       return null;

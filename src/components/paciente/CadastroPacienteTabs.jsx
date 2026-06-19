@@ -2,8 +2,6 @@ export default function CadastroPacienteTabs({ aba, setAba }) {
   const tabs = [
     "Dados Pessoais",
     "Endereço",
-    "Dados Clínicos",
-    "Arquivo do Exame",
   ];
 
   return (

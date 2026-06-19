@@ -23,9 +23,11 @@ export default function CadastroPacienteFooter({
         >
           Voltar
         </button>
+
+        
       )}
 
-      {aba < 4 ? (
+      {aba < 2 && (
         <button
           type="button"
           onClick={avancar}
@@ -33,15 +35,21 @@ export default function CadastroPacienteFooter({
         >
           Avançar
         </button>
-      ) : (
-        <button
+
+        
+      )
+      
+     }
+
+      <button
           type="button"
           onClick={handleSubmit}
           className="px-4 py-2 bg-green-700 text-white rounded-md hover:bg-green-800 transition-colors cursor-pointer font-medium body-font"
         >
           Confirmar
         </button>
-      )}
+
+
     </div>
   );
 }

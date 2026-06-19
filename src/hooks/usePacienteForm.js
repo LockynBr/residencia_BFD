@@ -2,9 +2,19 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { pacienteInitialState } from "../constants/pacienteInitialState";
+import { criarPaciente } from "../services/pacienteService";
 
-// TODO: substituir pelo seu service real
-// import pacienteService from "../services/pacienteService";
+import usePacienteValidation from "./usePacienteValidation";
+import { formatCPF, formatPhone } from "../utils/formatters";
+import { camposPorAba } from "../constants/pacienteTabs";
+
+function normalizePacientePayload(data) {
+  return {
+    ...data,
+    dataNascimento: data.dataNascimento || null,
+    dataExame: data.dataExame || null,
+  };
+}
 
 export default function usePacienteForm() {
   const navigate = useNavigate();
@@ -12,32 +22,42 @@ export default function usePacienteForm() {
   const [aba, setAba] = useState(1);
   const [formData, setFormData] = useState(pacienteInitialState);
 
-  // =========================
-  // HANDLE CHANGE GENÉRICO
-  // =========================
+  const { errors, validateField, validateForm, validateStep } =
+    usePacienteValidation();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
+    let formattedValue = value;
+
+    if (name === "cpf") {
+      formattedValue = formatCPF(value);
+    }
+
+    if (name === "telefone") {
+      formattedValue = formatPhone(value);
+    }
+
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: formattedValue,
     }));
+
+    validateField(name, formattedValue);
   };
 
-  // =========================
-  // NAVEGAÇÃO ENTRE ABAS
-  // =========================
   const avancar = () => {
-    setAba((prev) => (prev < 4 ? prev + 1 : prev));
+    const isValid = validateStep(formData, camposPorAba[aba]);
+
+    if (!isValid) return;
+
+    setAba((prev) => prev + 1);
   };
 
   const voltar = () => {
     setAba((prev) => (prev > 1 ? prev - 1 : prev));
   };
 
-  // =========================
-  // CANCELAR
-  // =========================
   const cancelar = () => {
     const confirmar = window.confirm(
       "Tem certeza que deseja cancelar? Os dados serão perdidos."
@@ -48,29 +68,31 @@ export default function usePacienteForm() {
     }
   };
 
-  // =========================
-  // RESET FORM
-  // =========================
   const resetForm = () => {
     setFormData(pacienteInitialState);
     setAba(1);
   };
 
-  // =========================
-  // SUBMIT
-  // =========================
   const handleSubmit = async () => {
-    try {
-      console.log("Dados completos:", formData);
+    const isValid = validateForm(formData);
 
-      // await pacienteService.create(formData);
+    if (!isValid) {
+      alert("Existem campos obrigatórios não preenchidos.");
+      return;
+    }
+
+    try {
+      const payload = normalizePacientePayload(formData);
+
+      const response = await criarPaciente(payload);
+
+      console.log("RESPOSTA API:", response);
 
       alert("Paciente cadastrado com sucesso!");
 
       resetForm();
     } catch (error) {
-      console.error("Erro ao cadastrar paciente:", error);
-      alert("Erro ao cadastrar paciente.");
+      console.error("ERRO:", error);
     }
   };
 
@@ -80,6 +102,8 @@ export default function usePacienteForm() {
 
     formData,
     setFormData,
+
+    errors,
 
     handleChange,
 
