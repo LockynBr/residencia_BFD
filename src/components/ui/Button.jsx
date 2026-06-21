@@ -9,7 +9,7 @@ export default function Button({
   const variants = {
     primary: `
       bg-[var(--color-green-500)]
-      text-[var(--color-text-primary)]
+      text-[var(--color-white-300)]
       hover:bg-[var(--color-green-700)]
     `,
 
@@ -17,6 +17,12 @@ export default function Button({
       bg-[var(--color-green-500)]
       text-[var(--color-text-primary)]
       hover:opacity-90
+    `,
+
+    tertiary: `
+      bg-[var(--color-white-300)]
+      text-[var(--color-green-700)]
+      hover:opacity-70
     `,
 
     danger: `

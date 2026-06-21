@@ -8,10 +8,10 @@ export default function DadosClinicos({ formData, handleChange }) {
         <input
           type="text"
           name="hospitalClinica"
-          value={formData.hospitalClinica}
+          value={formData.hospitalClinica}                                              
           onChange={handleChange}
           placeholder="Nome do Hospital ou clinica do exame"
-          className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base placeholder:text-neutral-400"
+          className="w-full px-3 py-2 border border-[var(--color-white-400)] rounded-xl focus:outline-none focus:ring-1 focus:ring-green-500/80 bg-[var(--color-white-100)] text-[var(--color-green-800)] body-font text-base placeholder:text-[var(--color-white-400)]"
         />
       </div>
 
@@ -25,7 +25,7 @@ export default function DadosClinicos({ formData, handleChange }) {
           value={formData.medicoSolicitante}
           onChange={handleChange}
           placeholder="Nome do médico solicitante do exame"
-          className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base placeholder:text-neutral-400"
+          className="w-full px-3 py-2 border border-[var(--color-white-400)] rounded-xl focus:outline-none focus:ring-1 focus:ring-green-500/80 bg-[var(--color-white-100)] text-[var(--color-green-800)] body-font text-base placeholder:text-[var(--color-white-400)]"
         />
       </div>
 
@@ -39,7 +39,7 @@ export default function DadosClinicos({ formData, handleChange }) {
           value={formData.crm}
           onChange={handleChange}
           placeholder="CRM000000-UF"
-          className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base placeholder:text-neutral-400"
+         className="w-full px-3 py-2 border border-[var(--color-white-400)] rounded-xl focus:outline-none focus:ring-1 focus:ring-green-500/80 bg-[var(--color-white-100)] text-[var(--color-green-800)] body-font text-base placeholder:text-[var(--color-white-400)]"
         />
       </div>
 
@@ -52,7 +52,7 @@ export default function DadosClinicos({ formData, handleChange }) {
           name="dataExame"
           value={formData.dataExame}
           onChange={handleChange}
-          className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base"
+          className="w-full px-3 py-2 border border-[var(--color-white-400)] rounded-xl focus:outline-none focus:ring-1 focus:ring-green-500/80 bg-[var(--color-white-100)] text-[var(--color-green-800)] body-font text-base placeholder:text-[var(--color-white-400)]"
         />
       </div>
 
@@ -64,7 +64,7 @@ export default function DadosClinicos({ formData, handleChange }) {
           name="tipoExame"
           value={formData.tipoExame}
           onChange={handleChange}
-          className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base"
+          className="w-full px-3 py-2 border border-[var(--color-white-400)] rounded-xl focus:outline-none focus:ring-1 focus:ring-green-500/80 bg-[var(--color-white-100)] text-[var(--color-green-800)] body-font text-base placeholder:text-[var(--color-white-400)]"
         >
           <option value="">Selecione</option>
           <option value="mamografia">Mamografia</option>
@@ -85,7 +85,7 @@ export default function DadosClinicos({ formData, handleChange }) {
           onChange={handleChange}
           rows="3"
           placeholder="Observações clínicas..."
-          className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base placeholder:text-neutral-400"
+          className="w-full px-3 py-2 border border-[var(--color-white-400)] rounded-xl focus:outline-none focus:ring-1 focus:ring-green-500/80 bg-[var(--color-white-100)] text-[var(--color-green-800)] body-font text-base placeholder:text-[var(--color-white-400)]"
         />
       </div>
 
@@ -99,7 +99,7 @@ export default function DadosClinicos({ formData, handleChange }) {
           onChange={handleChange}
           rows="2"
           placeholder="Alergias do paciente..."
-          className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base placeholder:text-neutral-400"
+         className="w-full px-3 py-2 border border-[var(--color-white-400)] rounded-xl focus:outline-none focus:ring-1 focus:ring-green-500/80 bg-[var(--color-white-100)] text-[var(--color-green-800)] body-font text-base placeholder:text-[var(--color-white-400)]"
         />
       </div>
     </div>

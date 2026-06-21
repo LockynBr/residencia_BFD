@@ -43,10 +43,10 @@ export default function ArquivoExame({ formData, handleChange, setFormData }) {
         
         {/* Área de upload */}
         <div
-          className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
+          className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors cursor-pointer ${
             dragActive
-              ? "border-green-500 bg-green-50"
-              : "border-neutral-200 hover:border-green-400 bg-white"
+              ? "border-[var(--color-green-500)] bg-green-50"
+              : "border-[var(--color-white-400)] hover:border-[var(--color-green-500)] bg-[var(--color-white-100)]"
           }`}
           onDragEnter={handleDrag}
           onDragLeave={handleDrag}
@@ -66,7 +66,7 @@ export default function ArquivoExame({ formData, handleChange, setFormData }) {
             className="cursor-pointer flex flex-col items-center gap-2"
           >
             <svg
-              className="w-12 h-12 text-neutral-300"
+              className="w-12 h-12 text-[var(--color-green-500)]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

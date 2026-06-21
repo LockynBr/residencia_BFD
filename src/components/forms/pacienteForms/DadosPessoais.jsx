@@ -1,34 +1,27 @@
-export default function DadosPessoais({ formData, handleChange }) {
+import FormField from "../FormFields";
+import FormSelect from "../FormSelect"
+
+export default function DadosPessoais({ formData, handleChange, errors }) {
   return (
     <div className="p-6 space-y-4">
-      <div>
-        <label className="block text-green-900 body-font text-sm font-medium mb-1">
-          Nome completo <span className="text-danger">*</span>
-        </label>
-        <input
-          type="text"
-          name="nomeCompleto"
-          value={formData.nomeCompleto}
-          onChange={handleChange}
-          placeholder="Nome completo do paciente"
-          required
-          className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base placeholder:text-neutral-400"
-        />
-      </div>
+      <FormField
+        label="Nome completo"
+        name="nomeCompleto"
+        value={formData.nomeCompleto}
+        onChange={handleChange}
+        error={errors.nomeCompleto}
+        required
+        placeholder="Nome completo do paciente"
+      />
 
-      <div>
-        <label className="block text-green-900 body-font text-sm font-medium mb-1">
-          CPF
-        </label>
-        <input
-          type="text"
-          name="cpf"
-          value={formData.cpf}
-          onChange={handleChange}
-          placeholder="000.000.000-00"
-          className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base placeholder:text-neutral-400"
-        />
-      </div>
+      <FormField
+        label="CPF"
+        name="cpf"
+        value={formData.cpf}
+        onChange={handleChange}
+        error={errors.cpf}
+        placeholder="000.000.000-00"
+      />
 
       <div>
         <label className="block text-green-900 body-font text-sm font-medium mb-1">
@@ -44,48 +37,43 @@ export default function DadosPessoais({ formData, handleChange }) {
       </div>
 
       <div>
-        <label className="block text-green-900 body-font text-sm font-medium mb-1">
-          Sexo biológico
-        </label>
-        <select
+        
+        <FormSelect
+          label="Sexo biológico"
           name="sexoBiologico"
           value={formData.sexoBiologico}
           onChange={handleChange}
-          className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base"
-        >
-          <option value="">Selecionar</option>
-          <option value="masculino">Masculino</option>
-          <option value="feminino">Feminino</option>
-        </select>
-      </div>
-
-      <div>
-        <label className="block text-green-900 body-font text-sm font-medium mb-1">
-          Telefone
-        </label>
-        <input
-          type="tel"
-          name="telefone"
-          value={formData.telefone}
-          onChange={handleChange}
-          placeholder="(DDD) 9 0000-0000"
-          className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base placeholder:text-neutral-400"
+          options={[
+            {
+              value: "masculino",
+              label: "Masculino",
+            },
+            {
+              value: "feminino",
+              label: "Feminino",
+            },
+          ]}
         />
       </div>
 
-      <div>
-        <label className="block text-green-900 body-font text-sm font-medium mb-1">
-          E-mail
-        </label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="paciente@email.com"
-          className="w-full px-3 py-2 border border-neutral-200 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white text-green-900 body-font text-base placeholder:text-neutral-400"
-        />
-      </div>
+      <FormField
+        label="Telefone"
+        name="telefone"
+        value={formData.telefone}
+        onChange={handleChange}
+        error={errors.telefone}
+        placeholder="(99) 99999-9999"
+      />
+
+      <FormField
+        label="E-mail"
+        name="email"
+        type="email"
+        value={formData.email}
+        onChange={handleChange}
+        error={errors.email}
+        placeholder="paciente@email.com"
+      />
     </div>
   );
 }

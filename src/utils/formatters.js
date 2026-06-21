@@ -1,16 +1,16 @@
 export function formatCPF(value) {
-  return value
-    .replace(/\D/g, "")
+  const cpf = value.replace(/\D/g, "").slice(0, 11);
+
+  return cpf
     .replace(/(\d{3})(\d)/, "$1.$2")
     .replace(/(\d{3})(\d)/, "$1.$2")
-    .replace(/(\d{3})(\d{1,2})$/, "$1-$2")
-    .slice(0, 14);
+    .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
 }
 
 export function formatPhone(value) {
-  return value
-    .replace(/\D/g, "")
+  const phone = value.replace(/\D/g, "").slice(0, 11);
+
+  return phone
     .replace(/^(\d{2})(\d)/, "($1) $2")
-    .replace(/(\d{1})(\d{4})(\d{4})$/, "$1 $2-$3")
-    .slice(0, 16);
+    .replace(/(\d{5})(\d{4})$/, "$1-$2");
 }
