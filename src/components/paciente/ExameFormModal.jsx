@@ -86,6 +86,7 @@
 
 import { useState } from "react";
 
+import Button from "../ui/Button";
 import DadosClinicos from "../forms/pacienteForms/DadosClinicos";
 import ArquivoExame from "../forms/pacienteForms/ArquivoExame";
 
@@ -128,7 +129,7 @@ export default function ExameFormModal({
       <div className="bg-gradient-to-l from-[var(--color-white-200)] via-[var(--color-white-300)] to-[var(--color-white-300)] rounded-xl w-full max-w-5xl max-h-[90vh] overflow-y-auto shadow-xl">
 
         {/* Header */}
-        <div className="flex justify-between items-center p-6 border-b">
+        <div className="flex justify-between items-center p-6">
           <div>
             <h2 className="text-2xl font-bold">
               Adicionar Exame
@@ -148,10 +149,10 @@ export default function ExameFormModal({
         </div>
 
         {/* Conteúdo */}
-        <div className="p-6 space-y-6">
+        <div className="p-6 space-y-6 ">
 
           {/* Dados Clínicos */}
-          <section className="bg-white rounded-lg p-5 shadow-sm">
+          <section className="bg-gradient-to-l from-[var(--color-white-300)] via-[var(--color-white-200)] to-[var(--color-white-200)] rounded-lg p-5 shadow-sm">
             <h3 className="text-lg font-semibold mb-4">
               Dados Clínicos
             </h3>
@@ -163,7 +164,7 @@ export default function ExameFormModal({
           </section>
 
           {/* Arquivo do Exame */}
-          <section className="bg-white rounded-lg p-5 shadow-sm">
+          <section className="bg-gradient-to-l from-[var(--color-white-300)] via-[var(--color-white-200)] to-[var(--color-white-200)] rounded-lg p-5 shadow-sm">
             <h3 className="text-lg font-semibold mb-4">
               Arquivo do Exame
             </h3>
@@ -177,20 +178,22 @@ export default function ExameFormModal({
         </div>
 
         {/* Footer */}
-        <div className="flex justify-end gap-3 p-6 bg-gradient-to-r from-[var(--color-white-300)] via-[var(--color-white-200)] to-[var(--color-white-200)]">
-          <button
+        <div className="flex justify-around gap-3 p-6 bg-gradient-to-l from-[var(--color-white-200)] via-[var(--color-white-300)] to-[var(--color-white-300)]">
+          <Button
+         variant="danger"
+            className="w-80 drop-shadow-xl drop-shadow-green-200/80 hover:red-500"
             onClick={onClose}
-            className="px-4 py-2 border rounded-md cursor-pointer hover:bg-gray-100 transition-colors"
           >
             Cancelar
-          </button>
+          </Button>
 
-          <button
+          <Button
+          variant="primary"
             onClick={handleSalvar}
-            className="px-4 py-2 bg-green-700 text-white rounded-md cursor-pointer hover:bg-green-800 transition-colors"
+             className="w-80 drop-shadow-xl drop-shadow-green-200/80"
           >
             Salvar Exame
-          </button>
+          </Button>
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@ export default function Button({
 
     tertiary: `
       bg-[var(--color-white-300)]
-      text-[var(--color-green-800)]
+      text-[var(--color-green-700)]
       hover:opacity-70
     `,
 

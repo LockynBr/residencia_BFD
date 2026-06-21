@@ -15,7 +15,7 @@ export default function SearchInput({
           left-3
           top-1/2
           -translate-y-1/2
-          text-neutral-400
+          text-[var(--color-green-500)]
         "
       />
 
@@ -30,14 +30,14 @@ export default function SearchInput({
           pr-4
           py-2
           border
-          border-neutral-200
-          rounded-lg
-          bg-white
-          text-green-900
+          border-[var(--color-white-400)]
+          rounded-xl
+          bg-[var(--color-white-100)]
+          text-[var(--color-green-800)]
           body-font
           focus:outline-none
-          focus:ring-2
-          focus:ring-green-500
+          focus:ring-1
+          focus:ring-green-500/80
         "
       />
     </div>

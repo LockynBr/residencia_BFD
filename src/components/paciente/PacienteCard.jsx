@@ -7,10 +7,10 @@ export default function PacienteCard({
 }) {
   return (
 
-    <div className="rounded-xl p-1 bg-gradient-to-r from-[var(--color-white-300)] via-[var(--color-white-400)] to-[var(--color-green-500)] hover:shadow-md transition-shadow">
+    <div className="rounded-xl p-1 bg-gradient-to-r from-[var(--color-white-300)] via-[var(--color-white-400)] to-[var(--color-green-500)] transition delay-50 duration-300 ease-in-out hover:-translate-y-1 hover:scale-101">
       <div className="flex p-6 rounded-[10px] items-center justify-between bg-gradient-to-l from-[var(--color-white-200)] via-[var(--color-white-300)] to-[var(--color-white-300)]">
         <div>
-          <h2 className="text-xl font-semibold text-green-800">
+          <h2 className="text-xl font-semibold text-[var(--color-green-700)]">
             {paciente.nomeCompleto}
           </h2>
 
@@ -23,21 +23,21 @@ export default function PacienteCard({
           <p className="text-sm text-[var(--color-green-500)]">{paciente.email}</p>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex flex-row gap-2">
           <Button
             variant="tertiary"
-            className="w-full"
+            className="w-[150px]  drop-shadow-xl drop-shadow-green-200/80"
             onClick={() => onVisualizar(paciente)}
           >
             Visualizar
-          </Button>
+          </Button>                                   
 
           <Button
             variant="primary"
-            className="w-full"
+            className="w-[150px]  drop-shadow-xl drop-shadow-green-200/80"
             onClick={() => onAdicionarExame(paciente)}
           >
-            Adicionar Exame
+            Adicionar Exame                                                                       
           </Button>
 
          
