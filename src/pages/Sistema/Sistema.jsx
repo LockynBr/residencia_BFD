@@ -33,7 +33,7 @@ export default function Sistema() {
           title="Idioma"
           description="Selecione o idioma do sistema."
         >
-          <div className="w-60">
+          <div className="w-full lg:w-60">
             <Select
               value={language}
               onChange={(e) => setLanguage(e.target.value)}
@@ -53,7 +53,7 @@ export default function Sistema() {
           title="Fuso horário"
           description="Defina o fuso horário padrão."
         >
-          <div className="w-60">
+          <div className="w-full lg:w-60">
             <Select
               value={timezone}
               onChange={(e) => setTimezone(e.target.value)}
@@ -73,7 +73,7 @@ export default function Sistema() {
           title="Formato de data"
           description="Escolha o formato de exibição da data."
         >
-          <div className="w-60">
+          <div className="w-full lg:w-60">
             <Select
               value={dateFormat}
               onChange={(e) => setDateFormat(e.target.value)}
@@ -91,7 +91,7 @@ export default function Sistema() {
           title="Formato da hora"
           description="Escolha o formato de exibição da hora."
         >
-          <div className="w-60">
+          <div className="w-full lg:w-60">
             <Select
               value={timeFormat}
               onChange={(e) => setTimeFormat(e.target.value)}
@@ -116,7 +116,7 @@ export default function Sistema() {
           description="Encerrar a sessão após um período de inatividade."
           border={false}
         >
-          <div className="w-60">
+          <div className="w-full lg:w-60">
             <Select
               value={sessionTimeout}
               onChange={(e) => setSessionTimeout(e.target.value)}
@@ -136,10 +136,10 @@ export default function Sistema() {
       <Card>
         <h1 className="text-xl font-semibold mb-6">Aparência</h1>
 
-        <div className="flex justify-between">
-          <div className="flex flex-col gap-10">
-            <div className="flex gap-4">
-              <FaPaintBrush className="text-xl text-gray-600 mt-1" />
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+          <div className="flex flex-col gap-4 flex-1 min-w-0">
+            <div className="flex gap-4 items-start">
+              <FaPaintBrush className="text-xl text-gray-600 mt-0.5" />
 
               <div>
                 <h2 className="font-medium">Tema</h2>
@@ -149,7 +149,7 @@ export default function Sistema() {
             </div>
           </div>
 
-          <div className="w-60">
+          <div className="w-full lg:w-60 min-w-0">
             <Select value={theme} onChange={(e) => setTheme(e.target.value)}>
               <option>Claro</option>
               <option>Escuro</option>
@@ -158,12 +158,14 @@ export default function Sistema() {
           </div>
         </div>
       </Card>
-      <div className="flex justify-end gap-3 mt-1">
-        <Button className="!w-auto px-5 text-sm !bg-transparent !text-[var(--color-danger)] border border-[var(--color-danger)] hover:!bg-[var(--color-danger)] hover:!text-white">
+      <div className="flex flex-col lg:flex-row justify-end gap-3 mt-1">
+        <Button className="!w-full lg:!w-auto px-5 text-sm !bg-transparent !text-[var(--color-danger)] border border-[var(--color-danger)] hover:!bg-[var(--color-danger)] hover:!text-white">
           Cancelar alterações
         </Button>
 
-        <Button className="!w-auto px-5 text-sm">Salvar alterações</Button>
+        <Button className="!w-full lg:!w-auto px-5 text-sm">
+          Salvar alterações
+        </Button>
       </div>
     </div>
   );

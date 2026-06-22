@@ -7,12 +7,12 @@ export default function SettingItem({
 }) {
   return (
     <div
-      className={`flex items-center justify-between py-4 ${
+      className={`flex flex-col lg:flex-row lg:items-center lg:justify-between py-4 gap-3 lg:gap-0 ${
         border ? 'border-b border-gray-200' : ''
       }`}
     >
-      <div className="flex gap-4">
-        {Icon && <Icon className="text-xl text-gray-600 mt-1" />}
+      <div className="flex gap-4 items-start min-w-0">
+        {Icon && <Icon className="text-xl text-gray-600 mt-0.5" />}
 
         <div>
           <h2 className="font-medium">{title}</h2>
@@ -21,7 +21,7 @@ export default function SettingItem({
         </div>
       </div>
 
-      {children}
+      <div className="w-full lg:w-auto min-w-0">{children}</div>
     </div>
   );
 }
