@@ -2,7 +2,7 @@ export default function Card({ children, className = '' }) {
   return (
     <div
       className={
-        'bg-[#F8FFFB] rounded-2xl p-6 shadow-sm ' +
+        'bg-[#F8FFFB] rounded-2xl p-4 lg:p-6 shadow-sm ' +
         (className ? ` ${className}` : '')
       }
     >
