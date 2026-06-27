@@ -8,7 +8,7 @@ const data = [
   { name: 'Não Processados Corretamente', value: 15, color: '#ef5350' },
 ];
 
-export default function StatusChart() {
+export default function StatusChart( {data} ) {
   return (
     <div className="bg-secondary-100/70 backdrop-blur-md p-6 rounded-2xl border border-white/30 shadow-sm h-[320px] relative transition-all duration-300 hover:bg-secondary-100/90 hover:translate-y-[-4px] hover:shadow-lg">
       <div className="flex justify-between items-center mb-4">
@@ -27,7 +27,7 @@ export default function StatusChart() {
                 paddingAngle={3}
                 dataKey="value"
               >
-                {data.map((entry, index) => (
+                {data?.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.color} />
                 ))}
               </Pie>
@@ -37,7 +37,7 @@ export default function StatusChart() {
         </div>
         
         <div className="w-[50%] flex flex-col gap-3 pl-2">
-          {data.map((item, idx) => (
+          {data?.map((item, idx) => (
             <div key={idx} className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: item.color }} />
               <span className="text-[11px] font-bold text-gray-700 leading-tight">{item.name}</span>
